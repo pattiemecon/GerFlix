@@ -28,9 +28,11 @@ int main()
     */
 
 
-
-
-
+printf("\n1. Mostrar el listado de series\n");
+mostrarListaSeries(listaDeSeries, TAMSERIE);
+printf("\n\n2. Mostrar el listado de usuarios\n");
+mostrarListaUsuarios(listaDeUsuarios, TAMUSUARIO);
+printf("\n");
 
     return 0;
 }
