@@ -24,8 +24,8 @@ int main()
     2. Mostrar el listado de usuarios
     3. Mostrar el listado de Usuarios con el nombre de la serie que ve
     4. Mostrar por cada serie, el nombre de los usuarios que la ven.
-
-
+    5. ABM Usuario (pide Serie para asociar)
+    6. ABM Serie
 
     */
 
