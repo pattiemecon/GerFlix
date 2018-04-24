@@ -53,7 +53,7 @@ void mostrarListaUsuarios(eUsuario listaUsuarios[], int cantidadUsuarios)
 
     for(i = 0; i < cantidadUsuarios; i++)
     {
-        if(listaUsuarios[i].estado != 0)
+        if(listaUsuarios[i].estado == 1)
         {
             imprimioUsuarios = 1;
             printf("\n");

@@ -53,7 +53,7 @@ void mostrarListaSeries(eSerie listaSeries[], int cantidadSeries)
 
     for(i = 0; i < cantidadSeries; i++)
     {
-        if(listaSeries[i].estado != 0)
+        if(listaSeries[i].estado == 1)
         {
             imprimioSeries = 1;
             printf("\n");
