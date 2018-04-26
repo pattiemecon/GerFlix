@@ -18,27 +18,72 @@ int main()
     inicializarUsuariosEstado(listaDeUsuarios,TAMUSUARIO);
     inicializarUsuariosHardCode(listaDeUsuarios);
 
-    /*
+    int opcion;
+    int posicionDeIngreso;
+    int nuevoId;
+    int serieExistente;
 
-    1. Mostrar el listado de series
-    2. Mostrar el listado de usuarios
-    3. Mostrar el listado de Usuarios con el nombre de la serie que ve
-    4. Mostrar por cada serie, el nombre de los usuarios que la ven.
-    5. ABM Usuario (pide Serie para asociar)
-    6. ABM Serie
+    do
+    {
+        printf("\n1. Mostrar el listado de series");
+        printf("\n2. Mostrar el listado de usuarios");
+        printf("\n3. Mostrar el listado de Usuarios con el nombre de la serie que ve");
+        printf("\n4. Mostrar por cada serie, el nombre de los usuarios que la ven");
+        printf("\n5. ABM Usuario (pide Serie para asociar)");
+        printf("\n6. ABM Serie");
+        printf("\n7. Salir");
+        printf("\n\nIngrese opcion: ");
+        scanf("%d", &opcion);
 
-    */
+        switch(opcion)
+        {
+        case 1:
+            mostrarListaSeries(listaDeSeries, TAMSERIE);
+            break;
+        case 2:
+            mostrarListaUsuarios(listaDeUsuarios, TAMUSUARIO);
+            break;
+        case 3:
+            mostrarUsuariosConSeries(listaDeUsuarios, TAMUSUARIO, listaDeSeries, TAMSERIE);
+            break;
+        case 4:
+            mostrarSeriesConUsuarios(listaDeSeries, TAMSERIE, listaDeUsuarios, TAMUSUARIO);
+            break;
+        case 5:
+            posicionDeIngreso = buscarPosicionLibreUsuarios(listaDeUsuarios, TAMUSUARIO);
+            nuevoId = obtenerIdUsuarios(listaDeUsuarios, TAMUSUARIO);
+            listaDeUsuarios[posicionDeIngreso] = ingresarNuevoUsuario(nuevoId);
+            do
+            {
+                mostrarListaSeries(listaDeSeries, TAMSERIE);
+                printf("\nIngrese ID de la serie que ve el Usuario: ");
+                scanf("%d", &listaDeUsuarios[posicionDeIngreso].idSerie);
+                serieExistente = existeSerie(listaDeSeries, listaDeUsuarios[posicionDeIngreso].idSerie, TAMSERIE);
+                if(serieExistente == 0)
+                {
+                    printf("\nEl ID ingresado no existe. Por favor vuelva a ingresar el dato");
+                }
+            } while(serieExistente == 0);
+            break;
+        case 6:
+            posicionDeIngreso = buscarPosicionLibreSeries(listaDeSeries, TAMSERIE);
+            nuevoId = obtenerIdSeries(listaDeSeries, TAMSERIE);
+            listaDeSeries[posicionDeIngreso] = ingresarNuevaSerie(nuevoId);
+            break;
+        case 7:
+            break;
+        default:
+            printf("\nDebe ingresar una opcion del 1 al 7");
+            break;
+        }
 
-
-printf("\n1. Mostrar el listado de series\n");
-mostrarListaSeries(listaDeSeries, TAMSERIE);
-printf("\n\n2. Mostrar el listado de usuarios\n");
-mostrarListaUsuarios(listaDeUsuarios, TAMUSUARIO);
-printf("\n\n3. Mostrar el listado de Usuarios con el nombre de la serie que ve\n");
-mostrarUsuariosConSeries(listaDeUsuarios, TAMUSUARIO, listaDeSeries, TAMSERIE);
-printf("\n\n4. Mostrar por cada serie, el nombre de los usuarios que la ven\n");
-mostrarSeriesConUsuarios(listaDeSeries, TAMSERIE, listaDeUsuarios, TAMUSUARIO);
-printf("\n");
+        if(opcion != 7)
+        {
+            printf("\n");
+            system("pause");
+            system("cls");
+        }
+    } while(opcion != 7);
 
     return 0;
 }

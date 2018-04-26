@@ -14,3 +14,7 @@ void mostrarListaSeries(eSerie[], int);
 void imprimirDivisorSeries(char, int, int, int, int);
 void imprimirEncabezadoSeries(char, int, int, int, int);
 void imprimirDetalleSeries(char, eSerie, int, int, int, int);
+int buscarPosicionLibreSeries(eSerie[], int);
+int obtenerIdSeries(eSerie[], int);
+eSerie ingresarNuevaSerie(int);
+int existeSerie(eSerie[], int, int);

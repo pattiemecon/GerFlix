@@ -143,3 +143,109 @@ void imprimirDetalleSeries(char separador, eSerie listaSeries, int imprimeId, in
         }
     }
 }
+
+int buscarPosicionLibreSeries(eSerie listaSeries[], int cantidadElementos)
+{
+    int posicionLibre = -1;
+    int i;
+
+    for(i = 0; i < cantidadElementos; i++)
+    {
+        if(listaSeries[i].estado == 0)
+        {
+            posicionLibre = i;
+            break;
+        }
+    }
+
+    return posicionLibre;
+}
+
+int obtenerIdSeries(eSerie listaSeries[], int cantidadElementos)
+{
+    int nuevoId;
+    int i;
+    int maximo;
+    int primerElemento = 1;
+
+    for(i = 0; i < cantidadElementos; i++)
+    {
+        if(listaSeries[i].estado != 0)
+        {
+            if(listaSeries[i].idSerie > maximo || primerElemento == 1)
+            {
+                maximo = listaSeries[i].idSerie;
+                primerElemento = 0;
+            }
+        }
+    }
+
+    if(primerElemento == 0)
+    {
+        nuevoId = maximo + 1;
+    }
+    else
+    {
+        nuevoId = 1;
+    }
+
+    return nuevoId;
+}
+
+eSerie ingresarNuevaSerie(int id)
+{
+    eSerie retorno;
+
+    retorno.idSerie = id;
+    do
+    {
+        printf("\nIngrese nombre de la serie: ");
+        fflush(stdin);
+        gets(retorno.nombre);
+        if(strcmp(retorno.nombre, "") == 0)
+        {
+            printf("\nDebe ingresar un nombre para la serie");
+        }
+    } while(strcmp(retorno.nombre, "") == 0);
+
+    do
+    {
+        printf("\nIngrese genero de la serie: ");
+        fflush(stdin);
+        gets(retorno.genero);
+        if(strcmp(retorno.genero, "") == 0)
+        {
+            printf("\nDebe ingresar un genero para la serie");
+        }
+    } while(strcmp(retorno.genero, "") == 0);
+
+    do
+    {
+        printf("\nIngrese cantidad de temporadas de la serie: ");
+        scanf("%d", &retorno.cantidadTemporadas);
+        if(retorno.cantidadTemporadas < 1)
+        {
+            printf("\nDebe ingresar un numero positivo");
+        }
+    } while(retorno.cantidadTemporadas < 1);
+    retorno.estado = 1;
+
+    return retorno;
+}
+
+int existeSerie(eSerie listaSeries[], int elementoBuscado, int cantidadElementos)
+{
+    int existeElemento = 0;
+    int i;
+
+    for(i = 0; i < cantidadElementos; i++)
+    {
+        if(listaSeries[i].idSerie == elementoBuscado)
+        {
+            existeElemento = 1;
+            break;
+        }
+    }
+
+    return existeElemento;
+}

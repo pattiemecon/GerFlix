@@ -60,3 +60,25 @@
 	"Serie.h"
 	<string.h>
 
+1524762798 source:c:\users\pattie\documents\utn\gerflix\gerflix 1.0\serie.c
+	<stdio.h>
+	<stdlib.h>
+	"Serie.h"
+	<string.h>
+
+1524763000 c:\users\pattie\documents\utn\gerflix\gerflix 1.0\serie.h
+
+1524763117 source:c:\users\pattie\documents\utn\gerflix\gerflix 1.0\usuario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Usuario.h"
+
+1524761634 c:\users\pattie\documents\utn\gerflix\gerflix 1.0\usuario.h
+
+1524763099 source:c:\users\pattie\documents\utn\gerflix\gerflix 1.0\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Serie.h"
+	"Usuario.h"
+

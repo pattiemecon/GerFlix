@@ -118,3 +118,71 @@ void imprimirDetalleUsuarios(char separador, eUsuario listaUsuarios, int imprime
         }
     }
 }
+
+int buscarPosicionLibreUsuarios(eUsuario listaUsuarios[], int cantidadElementos)
+{
+    int posicionLibre = -1;
+    int i;
+
+    for(i = 0; i < cantidadElementos; i++)
+    {
+        if(listaUsuarios[i].estado == 0)
+        {
+            posicionLibre = i;
+            break;
+        }
+    }
+
+    return posicionLibre;
+}
+
+int obtenerIdUsuarios(eUsuario listaUsuarios[], int cantidadElementos)
+{
+    int nuevoId;
+    int i;
+    int maximo;
+    int primerElemento = 1;
+
+    for(i = 0; i < cantidadElementos; i++)
+    {
+        if(listaUsuarios[i].estado != 0)
+        {
+            if(listaUsuarios[i].idUsuario > maximo || primerElemento == 1)
+            {
+                maximo = listaUsuarios[i].idUsuario;
+                primerElemento = 0;
+            }
+        }
+    }
+
+    if(primerElemento == 0)
+    {
+        nuevoId = maximo + 1;
+    }
+    else
+    {
+        nuevoId = 1;
+    }
+
+    return nuevoId;
+}
+
+eUsuario ingresarNuevoUsuario(int id)
+{
+    eUsuario retorno;
+
+    retorno.idUsuario = id;
+    do
+    {
+        printf("\nIngrese nombre del usuario: ");
+        fflush(stdin);
+        gets(retorno.nombre);
+        if(strcmp(retorno.nombre, "") == 0)
+        {
+            printf("\nDebe ingresar el nombre del usuario");
+        }
+    } while(strcmp(retorno.nombre, "") == 0);
+    retorno.estado = 1;
+
+    return retorno;
+}

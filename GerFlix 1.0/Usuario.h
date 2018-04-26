@@ -13,3 +13,6 @@ void mostrarListaUsuarios(eUsuario[], int);
 void imprimirDivisorUsuarios(char, int, int);
 void imprimirEncabezadoUsuarios(char, int, int);
 void imprimirDetalleUsuarios(char, eUsuario, int, int);
+int buscarPosicionLibreUsuarios(eUsuario[], int);
+int obtenerIdUsuarios(eUsuario[], int);
+eUsuario ingresarNuevoUsuario(int);
