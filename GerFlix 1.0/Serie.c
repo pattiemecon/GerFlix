@@ -47,9 +47,12 @@ void mostrarListaSeries(eSerie listaSeries[], int cantidadSeries)
     int i;
     int imprimioSeries = 0;
 
-    printf("\n------------------------------------------------------------------------------\n");
-    printf("|   ID|NOMBRE                                |GENERO              |TEMPORADAS|\n");
-    printf("|-----|--------------------------------------|--------------------|----------|");
+    printf("\n");
+    imprimirDivisorSeries('-', 1, 1, 1, 1);
+    printf("\n");
+    imprimirEncabezadoSeries('|', 1, 1, 1, 1);
+    printf("\n");
+    imprimirDivisorSeries('|', 1, 1, 1, 1);
 
     for(i = 0; i < cantidadSeries; i++)
     {
@@ -57,15 +60,86 @@ void mostrarListaSeries(eSerie listaSeries[], int cantidadSeries)
         {
             imprimioSeries = 1;
             printf("\n");
-            printf("|%5d|", listaSeries[i].idSerie);
-            printf("%-38s|", listaSeries[i].nombre);
-            printf("%-20s|", listaSeries[i].genero);
-            printf("%10d|", listaSeries[i].cantidadTemporadas);
+            imprimirDetalleSeries('|', listaSeries[i], 1, 1, 1, 1);
         }
     }
     if(imprimioSeries == 0)
     {
         printf("\nNO HAY SERIES INGRESADAS");
     }
-    printf("\n------------------------------------------------------------------------------\n");
+    printf("\n");
+    imprimirDivisorSeries('-', 1, 1, 1, 1);
+}
+
+void imprimirDivisorSeries(char separador, int imprimeId, int imprimeNombre, int imprimeGenero, int imprimeTemporadas)
+{
+    if(imprimeId == 1 || imprimeNombre == 1 || imprimeGenero == 1 || imprimeTemporadas == 1)
+    {
+        printf("%c", separador);
+        if(imprimeId == 1)
+        {
+            printf("-----%c", separador);
+        }
+        if(imprimeNombre == 1)
+        {
+            printf("------------------------------%c", separador);
+        }
+        if(imprimeGenero == 1)
+        {
+            printf("--------------------%c", separador);
+        }
+        if(imprimeTemporadas == 1)
+        {
+            printf("----------%c", separador);
+        }
+    }
+}
+
+void imprimirEncabezadoSeries(char separador, int imprimeId, int imprimeNombre, int imprimeGenero, int imprimeTemporadas)
+{
+    if(imprimeId == 1 || imprimeNombre == 1 || imprimeGenero == 1 || imprimeTemporadas == 1)
+    {
+        printf("%c", separador);
+        if(imprimeId == 1)
+        {
+            //printf("   ID%c", separador);
+            printf("%5s%c", "ID", separador);
+        }
+        if(imprimeNombre == 1)
+        {
+            printf("%-30s%c", "SERIE", separador);
+        }
+        if(imprimeGenero == 1)
+        {
+            printf("%-20s%c", "GENERO", separador);
+        }
+        if(imprimeTemporadas == 1)
+        {
+            printf("%10s%c", "TEMPORADAS", separador);
+        }
+    }
+}
+
+void imprimirDetalleSeries(char separador, eSerie listaSeries, int imprimeId, int imprimeNombre, int imprimeGenero, int imprimeTemporadas)
+{
+    if(imprimeId == 1 || imprimeNombre == 1 || imprimeGenero == 1 || imprimeTemporadas == 1)
+    {
+        printf("%c", separador);
+        if(imprimeId == 1)
+        {
+            printf("%5d%c", listaSeries.idSerie, separador);
+        }
+        if(imprimeNombre == 1)
+        {
+            printf("%-30s%c", listaSeries.nombre, separador);
+        }
+        if(imprimeGenero == 1)
+        {
+            printf("%-20s%c", listaSeries.genero, separador);
+        }
+        if(imprimeTemporadas == 1)
+        {
+            printf("%10d%c", listaSeries.cantidadTemporadas, separador);
+        }
+    }
 }

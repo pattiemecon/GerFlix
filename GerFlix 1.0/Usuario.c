@@ -47,9 +47,12 @@ void mostrarListaUsuarios(eUsuario listaUsuarios[], int cantidadUsuarios)
     int i;
     int imprimioUsuarios = 0;
 
-    printf("\n----------------------------------------------------------\n");
-    printf("|   ID|NOMBRE                                            |\n");
-    printf("|-----|--------------------------------------------------|");
+    printf("\n");
+    imprimirDivisorUsuarios('-', 1, 1);
+    printf("\n");
+    imprimirEncabezadoUsuarios('|', 1, 1);
+    printf("\n");
+    imprimirDivisorUsuarios('|', 1, 1);
 
     for(i = 0; i < cantidadUsuarios; i++)
     {
@@ -57,13 +60,61 @@ void mostrarListaUsuarios(eUsuario listaUsuarios[], int cantidadUsuarios)
         {
             imprimioUsuarios = 1;
             printf("\n");
-            printf("|%5d|", listaUsuarios[i].idUsuario);
-            printf("%-50s|", listaUsuarios[i].nombre);
+            imprimirDetalleUsuarios('|', listaUsuarios[i], 1, 1);
         }
     }
     if(imprimioUsuarios == 0)
     {
         printf("\nNO HAY USUARIOS INGRESADOS");
     }
-    printf("\n----------------------------------------------------------\n");
+    printf("\n");
+    imprimirDivisorUsuarios('-', 1, 1);
+}
+
+void imprimirDivisorUsuarios(char separador, int imprimeId, int imprimeNombre)
+{
+    if(imprimeId == 1 || imprimeNombre == 1)
+    {
+        printf("%c", separador);
+        if(imprimeId == 1)
+        {
+            printf("-----%c", separador);
+        }
+        if(imprimeNombre == 1)
+        {
+            printf("------------------------------%c", separador);
+        }
+    }
+}
+
+void imprimirEncabezadoUsuarios(char separador, int imprimeId, int imprimeNombre)
+{
+    if(imprimeId == 1 || imprimeNombre == 1)
+    {
+        printf("%c", separador);
+        if(imprimeId == 1)
+        {
+            printf("%5s%c", "ID", separador);
+        }
+        if(imprimeNombre == 1)
+        {
+            printf("%-30s%c", "NOMBRE", separador);
+        }
+    }
+}
+
+void imprimirDetalleUsuarios(char separador, eUsuario listaUsuarios, int imprimeId, int imprimeNombre)
+{
+    if(imprimeId == 1 || imprimeNombre == 1)
+    {
+        printf("%c", separador);
+        if(imprimeId == 1)
+        {
+            printf("%5d%c", listaUsuarios.idUsuario, separador);
+        }
+        if(imprimeNombre == 1)
+        {
+            printf("%-30s%c", listaUsuarios.nombre, separador);
+        }
+    }
 }

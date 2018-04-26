@@ -38,3 +38,25 @@
 	<string.h>
 	"Usuario.h"
 
+1524700402 source:f:\mis documentos\escritorio\programacion\utn\programacion 1\gerflix\gerflix 1.0\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Serie.h"
+	"Usuario.h"
+
+1524699387 f:\mis documentos\escritorio\programacion\utn\programacion 1\gerflix\gerflix 1.0\serie.h
+
+1524699800 f:\mis documentos\escritorio\programacion\utn\programacion 1\gerflix\gerflix 1.0\usuario.h
+
+1524700986 source:f:\mis documentos\escritorio\programacion\utn\programacion 1\gerflix\gerflix 1.0\usuario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Usuario.h"
+
+1524700986 source:f:\mis documentos\escritorio\programacion\utn\programacion 1\gerflix\gerflix 1.0\serie.c
+	<stdio.h>
+	<stdlib.h>
+	"Serie.h"
+	<string.h>
+
