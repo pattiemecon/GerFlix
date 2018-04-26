@@ -50,18 +50,16 @@ void mostrarUsuariosConSeries(eUsuario listaUsuarios[], int cantidadUsuarios, eS
     int imprimioUsuarios = 0;
     int halloSerie = 0;
 
-    /*printf("\n---------------------------------------------------------------------\n");
-    printf("|   ID|NOMBRE                        |SERIE                         |\n");
-    printf("|-----|------------------------------|------------------------------|");*/
     printf("\n");
     imprimirDivisorUsuarios('-', 1, 1);
     imprimirDivisorSeries('-', 0, 1, 0, 0);
     printf("\n");
     imprimirEncabezadoUsuarios('|', 1, 1);
-    imprimirEncabezadoSeries('|', 0, 1, 0, 0);
+    imprimirEncabezadoSeries(' ', 0, 1, 0, 0);
+    printf("|");
     printf("\n");
     imprimirDivisorUsuarios('|', 1, 1);
-    imprimirDivisorSeries('|', 0, 1, 0, 0);
+    imprimirDivisorSeries('-', 0, 1, 0, 0);
 
     for(i = 0; i < cantidadUsuarios; i++)
     {
@@ -70,8 +68,6 @@ void mostrarUsuariosConSeries(eUsuario listaUsuarios[], int cantidadUsuarios, eS
             imprimioUsuarios = 1;
             halloSerie = 0;
             printf("\n");
-            /*printf("|%5d|", listaUsuarios[i].idUsuario);
-            printf("%-30s|", listaUsuarios[i].nombre);*/
             imprimirDetalleUsuarios('|', listaUsuarios[i], 1, 1);
 
             for(j = 0; j < cantidadSeries; j++)
@@ -79,15 +75,15 @@ void mostrarUsuariosConSeries(eUsuario listaUsuarios[], int cantidadUsuarios, eS
                 if(listaSeries[j].estado == 1 && listaUsuarios[i].idSerie == listaSeries[j].idSerie)
                 {
                     halloSerie = 1;
-                    //printf("%-30s|", listaSeries[j].nombre);
-                    imprimirDetalleSeries('|', listaSeries[j], 0, 1, 0, 0);
+                    imprimirDetalleSeries(' ', listaSeries[j], 0, 1, 0, 0);
+                    printf("|");
                     break;
                 }
             }
 
             if(halloSerie == 0)
             {
-                printf("|                              |");
+                printf("                                |");
             }
         }
     }
@@ -95,7 +91,6 @@ void mostrarUsuariosConSeries(eUsuario listaUsuarios[], int cantidadUsuarios, eS
     {
         printf("\nNO HAY USUARIOS INGRESADOS");
     }
-    //printf("\n---------------------------------------------------------------------\n");
     printf("\n");
     imprimirDivisorUsuarios('-', 1, 1);
     imprimirDivisorSeries('-', 0, 1, 0, 0);
@@ -108,10 +103,17 @@ void mostrarSeriesConUsuarios(eSerie listaSeries[], int cantidadSeries, eUsuario
     int imprimioSeries = 0;
     int halloUsuarios = 0;
 
-    printf("\n------------------------------------------\n");
-    printf("|   ID|SERIE                             |\n");
-    printf("|     |    USUARIO                       |\n");
-    printf("|-----|----------------------------------|");
+    printf("\n");
+    imprimirDivisorSeries('-', 1, 1, 0, 0);
+    printf("\n");
+    imprimirEncabezadoSeries('|', 1, 1, 0, 0);
+    printf("\n");
+    printf("%-6s", "|");
+    printf("%-5s", "|");
+    imprimirEncabezadoUsuarios(' ', 0, 1);
+    printf("\b\b\b\b\b\b|");
+    printf("\n");
+    imprimirDivisorSeries('|', 1, 1, 0, 0);
 
     for(i = 0; i < cantidadSeries; i++)
     {
@@ -120,8 +122,7 @@ void mostrarSeriesConUsuarios(eSerie listaSeries[], int cantidadSeries, eUsuario
             imprimioSeries = 1;
             halloUsuarios = 0;
             printf("\n");
-            printf("|%5d|", listaSeries[i].idSerie);
-            printf("%-30s    |", listaSeries[i].nombre);
+            imprimirDetalleSeries('|', listaSeries[i], 1, 1, 0, 0);
 
             for(j = 0; j < cantidadUsuarios; j++)
             {
@@ -129,13 +130,19 @@ void mostrarSeriesConUsuarios(eSerie listaSeries[], int cantidadSeries, eUsuario
                 {
                     printf("\n");
                     halloUsuarios = 1;
-                    printf("|     |    %-30s|", listaUsuarios[j].nombre);
+                    printf("%-6s", "|");
+                    printf("%-5s", "|");
+                    imprimirDetalleUsuarios(' ', listaUsuarios[j], 0, 1);
+                    printf("\b\b\b\b\b\b|");
                 }
             }
 
             if(halloUsuarios == 0)
             {
-                printf("\n|     |     ** NO HAY USUARIOS VIENDO ** |");
+                printf("\n");
+                printf("%-6s", "|");
+                printf("%-5s", "|");
+                printf("** SIN USUARIOS **        |");
             }
         }
     }
@@ -143,5 +150,6 @@ void mostrarSeriesConUsuarios(eSerie listaSeries[], int cantidadSeries, eUsuario
     {
         printf("\nNO HAY SERIES INGRESADAS");
     }
-    printf("\n------------------------------------------\n");
+    printf("\n");
+    imprimirDivisorSeries('-', 1, 1, 0, 0);
 }

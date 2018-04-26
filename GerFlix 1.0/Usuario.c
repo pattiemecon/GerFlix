@@ -98,7 +98,7 @@ void imprimirEncabezadoUsuarios(char separador, int imprimeId, int imprimeNombre
         }
         if(imprimeNombre == 1)
         {
-            printf("%-30s%c", "NOMBRE", separador);
+            printf("%-30s%c", "USUARIO", separador);
         }
     }
 }
