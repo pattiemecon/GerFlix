@@ -51,24 +51,38 @@ int main()
             break;
         case 5:
             posicionDeIngreso = buscarPosicionLibreUsuarios(listaDeUsuarios, TAMUSUARIO);
-            nuevoId = obtenerIdUsuarios(listaDeUsuarios, TAMUSUARIO);
-            listaDeUsuarios[posicionDeIngreso] = ingresarNuevoUsuario(nuevoId);
-            do
+            if(posicionDeIngreso == -1)
             {
-                mostrarListaSeries(listaDeSeries, TAMSERIE);
-                printf("\nIngrese ID de la serie que ve el Usuario: ");
-                scanf("%d", &listaDeUsuarios[posicionDeIngreso].idSerie);
-                serieExistente = existeSerie(listaDeSeries, listaDeUsuarios[posicionDeIngreso].idSerie, TAMSERIE);
-                if(serieExistente == 0)
+                printf("\nNo hay espacio para ingresar un nuevo usuario");
+            }
+            else
+            {
+                nuevoId = obtenerIdUsuarios(listaDeUsuarios, TAMUSUARIO);
+                listaDeUsuarios[posicionDeIngreso] = ingresarNuevoUsuario(nuevoId);
+                do
                 {
-                    printf("\nEl ID ingresado no existe. Por favor vuelva a ingresar el dato");
-                }
-            } while(serieExistente == 0);
+                    mostrarListaSeries(listaDeSeries, TAMSERIE);
+                    printf("\nIngrese ID de la serie que ve el Usuario: ");
+                    scanf("%d", &listaDeUsuarios[posicionDeIngreso].idSerie);
+                    serieExistente = existeSerie(listaDeSeries, listaDeUsuarios[posicionDeIngreso].idSerie, TAMSERIE);
+                    if(serieExistente == 0)
+                    {
+                        printf("\nEl ID ingresado no existe. Por favor vuelva a ingresar el dato");
+                    }
+                } while(serieExistente == 0);
+            }
             break;
         case 6:
             posicionDeIngreso = buscarPosicionLibreSeries(listaDeSeries, TAMSERIE);
-            nuevoId = obtenerIdSeries(listaDeSeries, TAMSERIE);
-            listaDeSeries[posicionDeIngreso] = ingresarNuevaSerie(nuevoId);
+            if(posicionDeIngreso == -1)
+            {
+                printf("\nNo hay espacio para ingresar una nueva serie");
+            }
+            else
+            {
+                nuevoId = obtenerIdSeries(listaDeSeries, TAMSERIE);
+                listaDeSeries[posicionDeIngreso] = ingresarNuevaSerie(nuevoId);
+            }
             break;
         case 7:
             break;
